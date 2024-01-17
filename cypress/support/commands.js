@@ -26,9 +26,33 @@
 
 const loginPage = require("../fixtures/pages/loginPage.json");
 const general = require("../fixtures/pages/general.json");
+const inviteePage = require("../fixtures/pages/inviteeBoxPage.json");
+const inviteeDashboardPage = require("../fixtures/pages/inviteeDashboardPage.json");
 
-Cypress.Commands.add('login', (userName, password) => {
-    cy.get(loginPage.loginField).type(userName);
-    cy.get(loginPage.passwordField).type(password);
-    cy.get(general.submitButton).click({ force: true }); 
-})
+Cypress.Commands.add("login", (userName, password) => {
+  cy.get(loginPage.loginField).type(userName);
+  cy.get(loginPage.passwordField).type(password);
+  cy.get(general.submitButton).click({ force: true });
+});
+
+Cypress.Commands.add("approveAsUser", (user, wishes) => {
+  cy.get(general.submitButton).click({ force: true });
+  cy.contains("войдите").click({ force: true });
+
+  cy.login(user.email, user.password);
+
+  cy.contains("Создать карточку участника").should("exist");
+  cy.get(general.submitButton).click({ force: true });
+  cy.get(general.arrowRight).click();
+  cy.get(general.arrowRight).click();
+
+  cy.get(inviteePage.wishesInput).type(wishes);
+  cy.get(general.arrowRight).click();
+
+  cy.get(inviteeDashboardPage.pictureNotice)
+    .invoke("text")
+    .then((text) => {
+      expect(text).to.include("анонимный чат с вашим Тайным Сантой");
+    });
+  cy.clearCookies();
+});
