@@ -24,7 +24,7 @@ describe("user can create a box and run it", () => {
   let inviteLink;
   let wishes = faker.word.words();
 
-  it("user logs in and creates a box ", () => {
+  it.only("user logs in and creates a box ", () => {
     cy.visit("/login");
     cy.login(users.userMain.email, users.userMain.password);
 
@@ -71,6 +71,23 @@ describe("user can create a box and run it", () => {
       });
     cy.clearCookies();
   });
+
+  it.only("add users without an invitation link", () => {
+    cy.get(general.submitButton).click({ force: true });
+    cy.get(invitePage.invitedUserNameFieldFirst).type(users.user2.name);
+    cy.get(invitePage.invitedUserEmailFieldFirst).type(users.user2.email);
+    cy.get(invitePage.invitedUserNameFieldSekond).type(users.user3.name);
+    cy.get(invitePage.invitedUserEmailFieldSekond).type(users.user3.email);
+    cy.get(invitePage.button).click({ force: true });
+    cy.get(invitePage.messageField)
+      .invoke("text")
+      .should(
+        "include",
+        "Карточки участников успешно созданы и приглашения уже отправляются."
+      );
+    cy.clearCookies();
+  });
+
 
   it("approve users", () => {
     cy.visit(inviteLink);
@@ -120,8 +137,22 @@ describe("user can create a box and run it", () => {
         expect(response.status).to.eq(200);
       });
     })
-  })
 
+    it('arhive box', () => {
+      cy.get(
+        '.layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > .layout-row-start > [href="/account/boxes"] > .header-item > .header-item__text > .txt--med'
+      ).click();
+      cy.get(':nth-child(1) > a.base--clickable > .user-card').first().click();
+      cy.get(
+        '.layout-1__header-wrapper-fixed > .layout-1__header-secondary > .header-secondary > .header-secondary__right-item > .toggle-menu-wrapper > .toggle-menu-button > .toggle-menu-button--inner'
+      ).click();
+      cy.contains("Архивация и удаление").click({ force: true });
+  
+      cy.get(':nth-child(1) > .form-page-group__main > .frm-wrapper > .frm').type("Архивировать коробку");
+      cy.get('.btn-service').click();
+    });
+    
+  })
 })
 
 
