@@ -1,0 +1,22 @@
+{
+  "userMain": {
+    "email": "valentina.misem@gmail.com",
+    "password": "test1234",
+    "name": "valentina"
+  },
+  "user1": {
+    "email": "valentina.misem+test@gmail.com",
+    "password": "test1234",
+    "name": "valentina1"
+  },
+  "user2": {
+    "email": "valentina.misem+test1@gmail.com",
+    "password": "test1234",
+    "name": "valentina2"
+  },
+  "user3": {
+    "email": "valentina.misem+test2@gmail.com",
+    "password": "test1234",
+    "name": "valentina3"
+  }
+}

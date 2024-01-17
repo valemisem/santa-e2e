@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+const loginPage = require("../fixtures/pages/loginPage.json");
+const general = require("../fixtures/pages/general.json");
+
+Cypress.Commands.add('login', (userName, password) => {
+    cy.get(loginPage.loginField).type(userName);
+    cy.get(loginPage.passwordField).type(password);
+    cy.get(general.submitButton).click({ force: true }); 
+})
