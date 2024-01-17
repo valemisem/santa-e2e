@@ -1,0 +1,7 @@
+{
+    "boxes": ".layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > .layout-row-start > [href='/account/boxes'] > .header-item",
+    "oneBox": ".base--clickable .user-card ",
+    "tip": ".tip",
+    "approve1": "a > .txt-secondary--med",
+    "approve2": ".santa-modal_content_buttons > .btn-main"
+}

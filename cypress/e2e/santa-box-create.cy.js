@@ -3,6 +3,7 @@ const boxPage = require("../fixtures/pages/boxPage.json");
 const general = require("../fixtures/pages/general.json");
 const dashboard = require("../fixtures/pages/dashboardPage.json");
 const invitePage = require("../fixtures/pages/invitePage.json");
+const drawingPage = require("../fixtures/pages/drawingPage.json");
 import { faker } from "@faker-js/faker";
 
 describe("user can create a box and run it", () => {
@@ -78,22 +79,15 @@ describe("user can create a box and run it", () => {
     cy.approveAsUser(users.user3, wishes);
   });
 
-  // Cypress._.times(1, () => {
-  //   it("delete box", () => { // либо after (("...") => {})
-  //     cy.visit("/login");
-  //     cy.login(users.userMain.email, users.userMain.password);
-  //     cy.get(
-  //       '.layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > .layout-row-start > [href="/account/boxes"] > .header-item'
-  //     ).click();
-  //     cy.get(".base--clickable .user-card ").first().click({ force: true });
-  //     cy.get(
-  //       ".layout-1__header-wrapper-fixed > .layout-1__header-secondary > .header-secondary > .header-secondary__right-item > .toggle-menu-wrapper > .toggle-menu-button > .toggle-menu-button--inner"
-  //     ).click();
-  //     cy.contains("Архивация и удаление").click({ force: true });
-  //     cy.get(
-  //       ":nth-child(2) > .form-page-group__main > .frm-wrapper > .frm"
-  //     ).type("Удалить коробку");
-  //     cy.get(".layout-row-end > .btn-service").click({ force: true });
-  //   });
-  // });
+  it('drawing', () => {
+    cy.visit("/login");
+    cy.login(users.userMain.email, users.userMain.password);
+    cy.get(drawingPage.boxes).click();
+    cy.get(drawingPage.oneBox).last().click({ force: true });
+    cy.get(drawingPage.tip).should("exist")
+    cy.get(drawingPage.approve1).click({force: true})
+    cy.get(general.submitButton).click({ force: true });
+    cy.get(drawingPage.approve2).click()
+    cy.contains("Жеребьевка проведена").should("exist")
+  });
 });
