@@ -1,9 +1,3 @@
 {
-  "inviteLink": ":nth-child(2) > .form-page-group__main b",
-  "invitedUserNameFieldFirst": ":nth-child(1) > .frm-wrapper > #input-table-0",
-  "invitedUserEmailFieldFirst": ":nth-child(2) > .frm-wrapper > #input-table-0",
-  "invitedUserNameFieldSekond": ":nth-child(3) > .frm-wrapper > #input-table-1",
-  "invitedUserEmailFieldSekond": ":nth-child(4) > .frm-wrapper > #input-table-1",
-  "button":".form-page__buttons > .btn-main",
-  "messageField":":nth-child(3) > .form-page-group__main > .tip > section > .layout-row-space-between > .txt-secondary"
+    "inviteLink": ":nth-child(2) > .form-page-group__main b"
 }
