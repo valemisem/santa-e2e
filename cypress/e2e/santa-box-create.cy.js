@@ -97,7 +97,7 @@ describe("user can create a box and run it", () => {
   });
 
   Cypress._.times(1, () => {
-    it.only("delete box", () => { // либо after (("...") => {})
+    it("delete box", () => { // либо after (("...") => {})
       cy.visit("/login");
       cy.login(users.userMain.email, users.userMain.password);
       cy.get(
