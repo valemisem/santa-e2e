@@ -108,14 +108,14 @@ describe("user can create a box and run it", () => {
       });
     });
 
-    var token = "5TbCK4"
-    Cypress.env("token", token),
+    var token = "HOD61y"
+    Cypress.env("token", token)
 
     it.only("Delete a task using API", () => {
       cy.request({
         method: "DELETE",
         
-        url: `/box/${Cypress.env("token")}`,
+        url: `api/box/${Cypress.env("token")}`,
       }).then((response) => {
         expect(response.status).to.eq(200);
       });
