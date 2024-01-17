@@ -30,11 +30,13 @@ describe("user can create a box and run it", () => {
 
     cy.contains("Создать коробку").click();
     cy.get(boxPage.boxNameField).type(newBoxName);
-    // cy.get(":nth-child(3) > .frm").then(($token) => {
+    cy.get(":nth-child(3) > .frm").then(($token) => {
     // save a token to a var
-    // var token = $token.val();
+    var token = $token.val();
     // var token = '' + token
     // cy.get(boxPage.boxNameField).type(token); // проверка сохраненной переменной
+    Cypress.env("token", token)
+    })
 
     cy.get(general.arrowRight).click();
     cy.get(boxPage["6thIcon"]).click();
@@ -90,4 +92,36 @@ describe("user can create a box and run it", () => {
     cy.get(drawingPage.approve2).click()
     cy.contains("Жеребьевка проведена").should("exist")
   });
-});
+
+  describe("Delete boxes using API", () => {
+    before(() => {
+      cy.visit("/login");
+      cy.login(users.userMain.email, users.userMain.password);
+    });
+  
+    it.only("The page loads correctly", () => {
+      cy.request({
+        method: "GET",
+        url: `/account/boxes`
+      }).then((response) => {
+        expect(response.status).to.eq(200);
+      });
+    });
+
+    var token = "5TbCK4"
+    Cypress.env("token", token),
+
+    it.only("Delete a task using API", () => {
+      cy.request({
+        method: "DELETE",
+        
+        url: `/box/${Cypress.env("token")}`,
+      }).then((response) => {
+        expect(response.status).to.eq(200);
+      });
+    })
+  })
+
+})
+
+
