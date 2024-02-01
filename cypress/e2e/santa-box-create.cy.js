@@ -27,7 +27,6 @@ describe("user can create a box and run it", () => {
   it.only("user logs in and creates a box ", () => {
     cy.visit("/login");
     cy.login(users.userMain.email, users.userMain.password);
-
     cy.contains("Создать коробку").click();
     cy.get(boxPage.boxNameField).type(newBoxName);
     cy.get(":nth-child(3) > .frm").then(($token) => {
@@ -154,5 +153,4 @@ describe("user can create a box and run it", () => {
     
   })
 })
-
 
