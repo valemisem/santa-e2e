@@ -6,8 +6,8 @@ const addCucumberPreprocessorPlugin =
   require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
 
 module.exports = defineConfig({
-  viewportWidth: 1280,
-  viewportHeight: 800,
+  viewportWidth: 1920,
+  viewportHeight: 1200,
   projectId: 'fq2xh3',
   video: false,
   e2e: {
