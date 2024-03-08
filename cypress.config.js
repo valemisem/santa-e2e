@@ -7,6 +7,7 @@ const addCucumberPreprocessorPlugin =
 
 module.exports = defineConfig({
   e2e: {
+    specPattern: "**/*.feature",
     baseUrl: "https://staging.lpitko.ru",
     testIsolation: false,
     setupNodeEvents(on, config) {
@@ -20,5 +21,7 @@ module.exports = defineConfig({
     },
   },
   env: {},
-  watchForFileChanges: false,
+  watchForFileChanges: false
 });
+
+
