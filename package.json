@@ -188,7 +188,7 @@
     "cy:run:cloud": "npx cypress run --record --key 1d86b0e8-bf94-4843-9a87-dc3933d90291",
     "cy:spec1": "npx cypress run --spec 'cypress/e2e/test/login.feature' --record --key 1d86b0e8-bf94-4843-9a87-dc3933d90291",
     "cy:spec2": "npx cypress run --spec 'cypress/e2e/test/param_test_login.feature' --record --key 1d86b0e8-bf94-4843-9a87-dc3933d90291",
-    "cy:parallel": "npm run cy:spec1 -- --browser chrome --config-file cypress.config.js --group chrome --ci-build-id 3 --parallel & npm run  cy:spec2 -- --browser electron --config-file cypress.config-2.js --group electron --ci-build-id 3 --parallel",
+    "cy:parallel": "npm run cy:spec1 -- --browser chrome --config-file cypress.config.js --group chrome --ci-build-id $BUILD_NUMBER --parallel & npm run  cy:spec2 -- --browser electron --config-file cypress.config-2.js --group electron --ci-build-id $BUILD_NUMBER --parallel",
 
     "cy:nokey:spec1": "npx cypress run --spec 'cypress/e2e/test/login.feature'",
     "cy:nokey:spec2": "npx cypress run --spec 'cypress/e2e/test/param_test_login.feature'",
