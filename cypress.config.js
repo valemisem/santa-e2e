@@ -1,4 +1,5 @@
 const { defineConfig } = require("cypress");
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const createEsbuildPlugin =
   require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
@@ -16,17 +17,22 @@ module.exports = defineConfig({
     baseUrl: "https://staging.lpitko.ru",
     testIsolation: false,
     setupNodeEvents(on, config) {
+     
       const bundler = createBundler({
         plugins: [createEsbuildPlugin(config)],
       });
 
       on("file:preprocessor", bundler);
       addCucumberPreprocessorPlugin(on, config);
+      allureWriter(on, config, {resultsDir: "allure-results"})
+
       return config;
     },
   },
-  env: {},
-  watchForFileChanges: false
+  env: {
+    allureReuseAfterSpec: true,
+  },
+    watchForFileChanges: false
 });
 
 

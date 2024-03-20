@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Mar 20 15:45:35 CET 2024","Wed Mar 20 15:45:42 CET 2024","6378","","User logs in","","","","I want to log in",""
+"passed","Wed Mar 20 15:45:47 CET 2024","Wed Mar 20 15:45:50 CET 2024","2379","","User can log in","","","","I want to login (example #2)",""
+"broken","","","","","param_test_login.feature","","","","Oops...we found an error preparing this test file: param_test_login.feature",""
+"passed","Wed Mar 20 15:45:44 CET 2024","Wed Mar 20 15:45:47 CET 2024","3149","","User can log in","","","","I want to login (example #1)",""
+"broken","","","","","login.feature","","","","Oops...we found an error preparing this test file: login.feature",""

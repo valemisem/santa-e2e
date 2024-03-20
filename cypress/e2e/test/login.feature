@@ -1,4 +1,4 @@
-Feature: User can log in
+Feature: User logs in
 
 Scenario: I want to log in
   Given I navigate to the log in page

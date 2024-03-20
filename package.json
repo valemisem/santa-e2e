@@ -3,7 +3,11 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@cucumber/cucumber": "^10.3.1",
     "@faker-js/faker": "^8.3.1",
-    "cypress": "^13.6.2"
+    "@shelex/cypress-allure-plugin": "^2.40.1",
+    "allure-commandline": "^2.27.0",
+    "allure-cucumberjs": "^2.14.1",
+    "allure-cypress": "^2.14.1",
+    "cypress": "^12.14.0"
   },
   "name": "santa-e2e",
   "description": "Домашнее задание 6.1.1",
@@ -183,17 +187,20 @@
     "yauzl": "^2.10.0"
   },
   "scripts": {
+
+    "allure:run": "npx cypress run --env allure=true",
+    "allure:report": "npx allure generate allure-results --clean -o allure-report && npx allure open allure-report",
+
     "cy:run": "cypress run",
     "cy:open": "npx cypress open",
     "cy:run:cloud": "npx cypress run --record --key 1d86b0e8-bf94-4843-9a87-dc3933d90291",
     "cy:spec1": "npx cypress run --spec 'cypress/e2e/test/login.feature' --record --key 1d86b0e8-bf94-4843-9a87-dc3933d90291",
     "cy:spec2": "npx cypress run --spec 'cypress/e2e/test/param_test_login.feature' --record --key 1d86b0e8-bf94-4843-9a87-dc3933d90291",
     "cy:parallel": "npm run cy:spec1 -- --browser chrome --config-file cypress.config.js --group chrome --ci-build-id $BUILD_NUMBER --parallel & npm run  cy:spec2 -- --browser electron --config-file cypress.config-2.js --group electron --ci-build-id $BUILD_NUMBER --parallel",
-
+    
     "cy:nokey:spec1": "npx cypress run --spec 'cypress/e2e/test/login.feature'",
     "cy:nokey:spec2": "npx cypress run --spec 'cypress/e2e/test/param_test_login.feature'",
     "cy:nokey:parallel": "npm run cy:nokey:spec1 -- --browser chrome & npm run cy:nokey:spec2 -- --browser electron"
-
   },
   "author": "",
   "license": "ISC"
